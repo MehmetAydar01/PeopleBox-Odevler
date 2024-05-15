@@ -2,6 +2,7 @@
 
     // Not: Odev çözümleri html kodları içindedir.
 
+    // SORU 4 ÇÖZÜM
     define("baslik", "Filmler");
     
     $kategori1 = "Macera";
@@ -37,6 +38,7 @@
 <body>
     <div class="container my-3">
         <div class="row">
+            <!-- SORU 4 ÇÖZÜM -->
             <h1><?php echo baslik; ?></h1>
         </div>
         <div class="row">
@@ -61,6 +63,8 @@
                                 <h5 class="card-title"><?php echo $film_baslik1; ?></h5>
                                 <p class="card-text">
                                     <?php
+                                        // SORU 1, SORU 2 ÇÖZÜM:
+
                                         $film_ozet1 = strtoupper($film_ozet1[0]) . strtolower(substr($film_ozet1, 1, 50)) . "...";
 
                                         echo $film_ozet1; 
@@ -74,6 +78,8 @@
                                 </div>
                                 <div class="card-link mt-4">
                                     <?php
+                                        // SORU 3 ÇÖZÜM:
+
                                         $link1 = explode(" ", $film_baslik1);
                                         $link1 = strtolower(implode("", $link1));
                                         
@@ -96,6 +102,8 @@
                                 <h5 class="card-title"><?php echo $film_baslik2; ?></h5>
                                 <p class="card-text">
                                     <?php
+                                        // SORU 1, SORU 2 ÇÖZÜM:
+
                                         $film_ozet2 = strtoupper($film_ozet2[0]) . strtolower(substr($film_ozet2, 1, 50)) . "...";
                                         echo $film_ozet2;
                                     ?>
@@ -108,6 +116,8 @@
                                 </div>
                                 <div class="card-link mt-4">
                                     <?php
+                                        // SORU 3 ÇÖZÜM:
+
                                         $link2 = explode(" ", $film_baslik2);
                                         $link2 = strtolower(implode("", $link2));
                                         
