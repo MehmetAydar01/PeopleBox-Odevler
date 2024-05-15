@@ -1,4 +1,8 @@
 <?php
+
+    // Not: Odev çözümleri html kodları içindedir.
+
+    define("baslik", "Filmler");
     
     $kategori1 = "Macera";
     $kategori2 = "Dram";
@@ -33,6 +37,9 @@
 <body>
     <div class="container my-3">
         <div class="row">
+            <h1><?php echo baslik; ?></h1>
+        </div>
+        <div class="row">
             <div class="col-3">
                 <ul class="list-group">
                     <li class="list-group-item"><?php echo $kategori1; ?></li>
@@ -52,12 +59,26 @@
                         <div class="col-9">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $film_baslik1; ?></h5>
-                                <p class="card-text"><?php echo $film_ozet1; ?></p>
+                                <p class="card-text">
+                                    <?php
+                                        $film_ozet1 = strtoupper($film_ozet1[0]) . strtolower(substr($film_ozet1, 1, 50)) . "...";
+
+                                        echo $film_ozet1; 
+                                    ?>
+                                </p>
                                 <div>
                                     <span class="badge bg-success">Yapım Tarihi: 03.12.2021</span>
                                     <span class="badge bg-success"><?php echo $film_yorumSayisi1; ?></span>
                                     <span class="badge bg-success"><?php echo $film_begeniSayisi1; ?></span>
                                     <span class="badge bg-success"><?php echo $film_vizyon1; ?></span>
+                                </div>
+                                <div class="card-link mt-4">
+                                    <?php
+                                        $link1 = explode(" ", $film_baslik1);
+                                        $link1 = strtolower(implode("", $link1));
+                                        
+                                        echo "<a href=#{$link1} class='btn btn-primary btn-sm' role='button'>$film_baslik1 Link</a>";
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -73,12 +94,25 @@
                         <div class="col-9">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $film_baslik2; ?></h5>
-                                <p class="card-text"><?php echo $film_ozet2; ?></p>
+                                <p class="card-text">
+                                    <?php
+                                        $film_ozet2 = strtoupper($film_ozet2[0]) . strtolower(substr($film_ozet2, 1, 50)) . "...";
+                                        echo $film_ozet2;
+                                    ?>
+                                </p>
                                 <div>
                                     <span class="badge bg-success">Yapım Tarihi: 31.10.2010</span>
                                     <span class="badge bg-success"><?php echo $film_yorumSayisi2; ?></span>
                                     <span class="badge bg-success"><?php echo $film_begeniSayisi2; ?></span>
                                     <span class="badge bg-success"><?php echo $film_vizyon2; ?></span>
+                                </div>
+                                <div class="card-link mt-4">
+                                    <?php
+                                        $link2 = explode(" ", $film_baslik2);
+                                        $link2 = strtolower(implode("", $link2));
+                                        
+                                        echo "<a href=#{$link2} class='btn btn-primary btn-sm' role='button'>$film_baslik2 Link</a>";
+                                    ?>
                                 </div>
                             </div>
                         </div>
