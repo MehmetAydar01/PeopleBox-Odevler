@@ -72,57 +72,52 @@
         <div class="row">
             <div class="col-3">
                 <ul class="list-group">
-            <?php
-                foreach($kategori as $kategoriler){
-                    echo '<li class= "list-group-item">'.$kategoriler.'</li>';
-                }  
-                ?>
+                <?php foreach($kategori as $kategoriler): ?>
+                    <li class= "list-group-item"><?php echo $kategoriler; ?></li>
+                <?php endforeach; ?>
                 </ul>
             </div>
             <div class="col-9">
-               <?php     
-                foreach($filmler as $id => $film)
-                                    {
-                  echo '<div class="card mb-3">
-                    <div class="row">
-                        <div class="col-3">         
-                            <img class="img-fluid" src="img/'.$film["resim"].'">
-                        </div>
-                        <div class="col-9">
-                            <div class="card-body">
-                            <h5 class="card-title"><a href='.$film["url"].'">'.$film["baslik"].'</a></h5>
-                                <p class="card-text">';
-
-                                    if(strlen($film["aciklama"]) > limit){
-                                        echo substr($film["aciklama"],0,limit)."...";
-                                    }else{
-                                        echo $film["aciklama"];
-                                    }
-                              echo  '</p><div>
-                                    <span class="badge bg-success">Yapım Tarihi: 03.12.2021</span>';
-
-                                        if($film["yorumSayisi"] > 0){
-                                            echo '<span class="badge bg-success"> '.$film["yorumSayisi"].' yorum </span>';
-                                        }
-                                   echo' <span class="badge bg-success">'.$film["begeniSayisi"].' beğeni</span>';
-
-                                   echo '<span class="badge bg-success">';
-
-                                        if($film["vizyon"]){
-                                            echo "vizyonda";
-                                        }else{
-                                            echo "vizyonda değil";
-                                        }
-
-                                   echo '</span>
-
+               <?php foreach($filmler as $id => $film): ?>
+                    <div class="card mb-3">
+                        <div class="row">
+                            <div class="col-3">         
+                                <img class="img-fluid" src=<?php echo "img/" . $film["resim"]; ?>>
+                            </div>
+                            <div class="col-9">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href=<?php echo $film["url"]; ?>>
+                                        <?php echo $film["baslik"]; ?></a>
+                                    </h5>
+                                    <p class="card-text">
+                                        <?php 
+                                            if (strlen($film["aciklama"]) > limit) 
+                                                echo substr($film["aciklama"],0,limit)."...";
+                                            else echo $film["aciklama"];
+                                        ?>
+                                    </p>
+                                    <div>
+                                        <span class="badge bg-success">Yapım Tarihi: 03.12.2021</span>
+                                            <?php if($film["yorumSayisi"] > 0): ?>
+                                                <span class="badge bg-success">
+                                                    <?php echo $film["yorumSayisi"]; ?> yorum
+                                                </span>
+                                            <?php endif; ?>
+                                        <span class="badge bg-success">
+                                            <?php $film["begeniSayisi"] ?> beğeni
+                                        </span>
+                                        <span class="badge bg-success">
+                                            <?php if($film["vizyon"]): ?> vizyonda
+                                            <?php else: ?> vizyonda değil
+                                            <?php endif; ?>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>';
-                    }
-                    ?>              
+                <?php endforeach; ?>              
             </div>
         </div>
     </div>
