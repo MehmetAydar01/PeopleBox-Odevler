@@ -111,4 +111,18 @@ function kisaAciklama($aciklama, $limit) {
         echo $aciklama;
     };
 }
+
+// Active Movies
+function getActiveMovies() {
+    $allMovies = getData()["movies"];
+    $activeMovies = [];
+
+    foreach ($allMovies as $key => $activeMovie) {
+        if ($activeMovie["is-active"]) {
+            $activeMovies[] = $activeMovie;
+        }
+    }
+    
+    return $activeMovies;
+}
 ?>
