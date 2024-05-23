@@ -27,6 +27,13 @@
             "password": "123465",
             "name": "Ahmet Kaya",
             "email": "academyakm0@gmail.com"
+        },
+        {
+            "id": 5,
+            "username": "mehmetaydar",
+            "password": "123456",
+            "name": "Mehmet",
+            "email": "mehmet@deneme.com"
         }
     ],
     "movies": [
@@ -59,6 +66,16 @@
             "comments": 0,
             "likes": 10,
             "is-active": true
+        },
+        {
+            "id": 4,
+            "title": "Film 4",
+            "description": "film 4 a\u00e7\u0131klamas\u0131",
+            "image": "1.jpeg",
+            "url": "film 4",
+            "comments": 0,
+            "likes": 0,
+            "is-active": false
         }
     ],
     "categories": [
