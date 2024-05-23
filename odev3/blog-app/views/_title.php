@@ -1,5 +1,5 @@
 <?php
-    $ozet = count(getData()["categories"]).' kategoride '.count(getData()["movies"]).'  film listelenmiştir';
+    $ozet = count(getData()["categories"]).' kategoride '.count(getActiveMovies()).'  film listelenmiştir';
     const baslik = "Popüler Filmler";
 ?>
     
