@@ -2,6 +2,9 @@
     require "libs/vars.php";
     require "libs/functions.php";  
 
+    $title = $description = "";
+    $title_err = $description_err = "";
+
     $id = $_GET["id"];
     $result = getBlogByID($id);
     $selectedMovie = mysqli_fetch_assoc($result);
@@ -13,10 +16,36 @@
         $url = $_POST["url"];
         $isActive =isset($_POST["isActive"]) ? 1 : 0;
 
-       if(editBlog($id,$title,$description,$image,$url,$isActive)){
-           header('Location: index.php');
+        $input_title = trim($title);
+
+        if(empty($input_title)){
+            $title_err = "title boş geçilemez.";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$title_err}</div>";
+        }else if(strlen($input_title) > 150){
+            $title_err = "title için çok fazla karakter kullandınız. Max: 150kr";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$title_err}</div>";
         }else{
-            echo "Güncelleme sırasında hata oluştu";
+            $title = control_input($input_title);
+        }
+
+        $input_description = trim($description);
+
+        if(empty($input_description)){
+            $description_err = "description boş geçilemez.";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$description_err}</div>";
+        }else if(strlen($input_description) < 10){
+            $description_err = "description için çok az karakter kullandınız. Min: 11kr";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$description_err}</div>";
+        }else{
+            $description = $input_description;
+        }
+
+        if(empty($title_err) && empty($description_err)) {
+            if(editBlog($id,$title,$description,$image,$url,$isActive)){
+                header('Location: index.php');
+            }else{
+                echo "Güncelleme sırasında hata oluştu";
+            }
         }
     }
 ?>
