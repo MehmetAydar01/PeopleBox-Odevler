@@ -12,8 +12,10 @@
 
         if(empty($input_title)){
             $title_err = "title boş geçilemez.";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$title_err}</div>";
         }else if(strlen($input_title) > 150){
             $title_err = "title için çok fazla karakter kullandınız. Max: 150kr";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$title_err}</div>";
         }else{
             $title = control_input($input_title);
         }
@@ -22,9 +24,11 @@
         $input_description = trim($_POST["description"]);
 
         if(empty($input_description)){
-            $description_err = "title boş geçilemez.";
+            $description_err = "description boş geçilemez.";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$description_err}</div>";
         }else if(strlen($input_description) < 10){
             $description_err = "description için çok az karakter kullandınız. Min: 11kr";
+            echo "<div class='alert alert-danger mb-0 text-center'>{$description_err}</div>";
         }else{
             $description = $input_description;
         }
@@ -63,14 +67,11 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Başlık</label>
                             <input type="text" class="form-control <?php echo (!empty($title_err)) ? 'is-invalid':''?>" name="title" id="title" value="<?php echo $title?>">
-                            <span class="invalid-feedback"><?php echo $title_err ?></span>
-                            <span class="invalid-feedback"><?php echo $title_err ?></span>
                         </div>
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Açıklama</label>
                             <textarea name="description" id="description" class="form-control <?php echo (!empty($description_err)) ? 'is-invalid':''?>"></textarea>
-                            <span class="invalid-feedback"><?php echo $description_err ?></span>
                         </div>
 
                         <div class="mb-3">
